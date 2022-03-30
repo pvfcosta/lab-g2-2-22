@@ -28,9 +28,9 @@ Para que possa troca-la
 
 ### **História 4**
 
-Como secretário<br/>
+Como agente<br/>
 Eu quero registrar veículos<br/>
-Para que os usuários possam acessa-los
+Para que os clientes possam acessá-los
 
 ### **História 5**
 
@@ -55,4 +55,17 @@ Para emitir um parecer sobre a aprovação financeira
 Como banco<br/>
 Eu posso conceder contrato de crédito<br/>
 Para associar os contratos aos pedidos de aluguel
+
+
+### **História 9**
+
+Como cliente<br/>
+Eu posso gerenciar os dados de cadastro<br/>
+Para alterar meus dados
+
+### **História 10**
+
+Como cliente<br/>
+Eu posso gerenciar os dados de cadastro<br/>
+Para remover minha conta minha conta
 
