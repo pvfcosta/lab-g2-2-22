@@ -1,7 +1,15 @@
 package loca.carros.LocaCarros.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Rendimento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Column(nullable = false)
     private String nomeEmpresa;
+    @Column(nullable = false)
     private double rendimento;
 
     public String getNomeEmpresa() {

@@ -20,6 +20,7 @@ public class ClienteController {
     public ModelAndView index(){
         List<Cliente> clientes = this.clienteRepository.findAll();
         ModelAndView mv = new ModelAndView("clientes/index");
+        mv.addObject("clientes",clientes);
         return mv;
     }
 }
