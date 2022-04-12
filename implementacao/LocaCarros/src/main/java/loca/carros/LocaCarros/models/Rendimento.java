@@ -11,6 +11,24 @@ public class Rendimento {
     private String nomeEmpresa;
     @Column(nullable = false)
     private double rendimento;
+    @Column(nullable = false)
+    private long idCliente;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(long idCliente) {
+        this.idCliente = idCliente;
+    }
 
     public String getNomeEmpresa() {
         return nomeEmpresa;
@@ -27,4 +45,6 @@ public class Rendimento {
     public void setRendimento(double rendimento) {
         this.rendimento = rendimento;
     }
+
+
 }

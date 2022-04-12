@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Rendimento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Cadastro de Rendimento</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <form action="/clientes/cadrend" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Empresa</label>
+                <input type="text" class="form-control" name="nomeEmpresa">
+                <div></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Rendimento</label>
+                <input type="number" class="form-control" name="rendimento">
+                <div></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Enviar</button>
+            <a href="javascript:history.back()">Voltar</a>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>
