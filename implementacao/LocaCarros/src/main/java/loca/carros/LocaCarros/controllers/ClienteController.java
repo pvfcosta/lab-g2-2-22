@@ -1,12 +1,17 @@
 package loca.carros.LocaCarros.controllers;
 
 import loca.carros.LocaCarros.dto.RequisicaoNovoCliente;
+import loca.carros.LocaCarros.models.Aluguel;
 import loca.carros.LocaCarros.models.Cliente;
 import loca.carros.LocaCarros.models.Rendimento;
+import loca.carros.LocaCarros.models.Veiculo;
+import loca.carros.LocaCarros.repositories.AluguelRepository;
 import loca.carros.LocaCarros.repositories.ClienteRepository;
 import loca.carros.LocaCarros.repositories.RendimentoRepository;
+import loca.carros.LocaCarros.repositories.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +29,10 @@ public class ClienteController {
     private ClienteRepository clienteRepository;
     @Autowired
     private RendimentoRepository rendimentoRepository;
+    @Autowired
+    private AluguelRepository aluguelRepository;
+    @Autowired
+    private VeiculoRepository veiculoRepository;
 
     private static Cliente clienteLogado;
 
@@ -32,11 +41,14 @@ public class ClienteController {
     public ModelAndView perfil(){
         ModelAndView mv;
         List<Rendimento> rendimentos = new ArrayList<>();
+        List<Aluguel> pedidos = new ArrayList<>();
         if (clienteLogado.getId()>0) {
             mv = new ModelAndView("clientes/perfil");
             mv.addObject("perfil", clienteLogado);
             rendimentos = this.rendimentoRepository.findRendimentosByIdCliente(clienteLogado.getId());
             mv.addObject("rendimentos", rendimentos);
+            pedidos = this.aluguelRepository.findAluguelByIdCliente(clienteLogado.getId());
+            mv.addObject("pedidos", pedidos);
         }
         else
             mv = new ModelAndView("clientes");
@@ -118,5 +130,20 @@ public class ClienteController {
     public String deletar(){
         this.clienteRepository.deleteById(clienteLogado.getId());
         return "redirect:entrar";
+    }
+
+    @GetMapping("/realizarpedido")
+    public ModelAndView realizarpedido(){
+        ModelAndView mv = new ModelAndView("clientes/realizarpedido");
+        mv.addObject("listaVeiculo", veiculoRepository.findAll());
+        return mv;
+    }
+
+    @PostMapping("/realizarpedido")
+    public String realizarpedido(@ModelAttribute Aluguel aluguel){
+        aluguel.setIdCliente(clienteLogado.getId());
+        this.aluguelRepository.save(aluguel);
+
+        return "redirect:perfil";
     }
 }

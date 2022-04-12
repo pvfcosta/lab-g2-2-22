@@ -45,6 +45,4 @@ public class Rendimento {
     public void setRendimento(double rendimento) {
         this.rendimento = rendimento;
     }
-
-
 }
